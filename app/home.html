@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>大象房车</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../mui/css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<style>
+			html,
+			body {
+				min-height: 100%;
+				background: #F2F2F2;
+				background-color: #F2F2F2;
+			}
+			.rv_slider-picture-size{
+				height: 200px !important;		
+			}
+			.rv-placeholder {
+				width: 56px !important;
+				height: 56px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<!-- <ul class="mui-table-view mui-table-view-chevron">
+				<li id="switch" class="mui-table-view-cell">
+					定时轮播
+					<div class="mui-switch">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</li>
+			</ul> -->
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/yuantiao.jpg">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/shuijiao.jpg">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/muwu.jpg">
+							<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/cbd.jpg">
+							<p class="mui-slider-title">Color of SIP CBD</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/yuantiao.jpg">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img class= "rv_slider-picture-size" src="../img/shuijiao.jpg">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-url='rv-list.html'><a href="#">
+		                    <img class="mui-media-object mui-pull-left rv-placeholder" src="../img/luggage.png">
+		                    <div class="mui-media-body mui-pull-left">房车</div></a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+		                    <img class="mui-media-object mui-pull-left rv-placeholder" src="../img/bill.png">
+		                    <div class="mui-media-body mui-pull-left">营地</div></a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+		                    <img class="mui-media-object mui-pull-left rv-placeholder" src="../img/presentation.png">
+		                    <div class="mui-media-body mui-pull-left">在路上</div></a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+		                    <img class="mui-media-object mui-pull-left rv-placeholder" src="../img/wrench.png">
+		                    <div class="mui-media-body mui-pull-left">设置</div></a></li>
+			</ul>
+		</div>
+	</body>
+	<script src="../mui/js/mui.min.js"></script>
+	<script src="../libs/ems.js" data-main='../js/home.js'></script>
+</html>
