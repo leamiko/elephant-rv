@@ -11,6 +11,13 @@
 	color: white;
 }
 
+.rv-color-red {
+	color: #ff0000 !important;
+}
+.rv-gearbox{
+	color:#ffffff !important;
+	background-color:#4a82d1;
+}
 .rv-list-footer {
 	position: fixed;
 	border: solid 1px #ddd;

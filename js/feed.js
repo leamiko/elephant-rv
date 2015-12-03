@@ -1,6 +1,6 @@
 (function($) {
-	var parseFeed = function(dstList) {
-		var feed = {
+/*	var parseRVList = function(response) {
+		var rvList = {
 			title: '',
 			link: '',
 			pubDate: '',
@@ -8,21 +8,24 @@
 			language: '',
 			items: []
 		};
-		dstList.forEach(function(srcItem) {
-			feed.items.push({
-				post_id: srcItem.post_id,
-				title: srcItem.title,
-				author: srcItem.author_name,
-				pubDate: srcItem.published_at,
-				link: "http://36kr.com/p/" + srcItem.post_id + ".html",
-				cover: srcItem.cover,
-				guid: srcItem.id.toString(),
-				description: srcItem.content
+		if(response.posts)
+		{
+			response.posts.forEach(function(srcItem) {
+				rvList.posts.push({
+					post_id: srcItem.post_id,
+					title: srcItem.title,
+					author: srcItem.author_name,
+					pubDate: srcItem.published_at,
+					link: "http://36kr.com/p/" + srcItem.post_id + ".html",
+					cover: srcItem.cover,
+					guid: srcItem.id.toString(),
+					description: srcItem.content
+				});
 			});
-		});
+		}
 		//feed.items = items;
 		return feed;
-	};
+	};*/
 	$.getFeed = function(url, success, error) {
 		error = error || $.noop;
 		$.ajax({
@@ -33,7 +36,7 @@
 				if (!response) {
 					return error();
 				}
-				success(parseFeed(response));
+				success(response);
 			},
 			error: error
 		});

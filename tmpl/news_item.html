@@ -1,11 +1,12 @@
-<li id="news_<%= this.id %>" class="mui-table-view-cell mui-media">
+<li id="news_<%= this.guid %>" class="mui-table-view-cell mui-media">
 	<a href="detail.html?guid=<%= this.guid %>" data-guid="<%= this.guid %>">
 		<div class="mui-media-object mui-pull-left">
-			<img src="<%= this.image %>" />
+			<img src="<%= this.thumbnail %>" />
 		</div>
 		<div class="mui-media-body">
-			<%= this.title %>
+			<span><%= this.title %> </span><span class='rv-gearbox'><%= this.gearbox %></span>
 		</div>
-		<p class='kr-time'><%= this.humanize %></p>
+		<p class='mui-ellipsis'>所在地：<%= this.location %></p>
+		<p class='mui-ellipsis'><span>适合人数<%= this.capacity %></span><span class='rv-color-red mui-pull-right'><%= this.price %></span></p>
 	</a>
 </li>
