@@ -185,12 +185,11 @@
 		//			successCallback(false);
 		//			return;
 		//		}
-		var pubDate = parseFloat(localStorage.getItem(RV_TIME_PUBDATE));
 		$.getFeed(RV_URL + '&id=2', function(rvs) {
+			var pubDate = parseFloat(localStorage.getItem(RV_TIME_PUBDATE));
 			console.log("RV_TIME_PUBDATE is " + pubDate + "Modified:" + Date.parse(rvs.posts[0].modified));
 			if (rvs.posts && (!pubDate || Date.parse(rvs.posts[0].modified) > pubDate)) {
 				var rvlist = [];
-				var pubDate = parseFloat(localStorage.getItem(RV_TIME_PUBDATE));
 				$.each(rvs.posts, function(index, post) {
 					var gearbox = post.custom_fields.gearbox[0];
 					var location = post.custom_fields.location[0];
