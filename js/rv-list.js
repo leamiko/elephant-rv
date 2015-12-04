@@ -1,6 +1,21 @@
 define(function(require, exports, module) {
 
-	mui.init();
+	mui.init({
+		preloadPages: [{
+			"id": "rv_detail_main",
+			"url": "/app/rv_detail_main.html",
+			"styles": {
+				"popGesture": "hide"
+			},
+			"subpages": [{
+				"id": "rv_detail",
+				"url": "/app/rv_detail.html",
+				"styles": {
+					"popGesture": "hide"
+				}
+			}]
+		}]
+	});
 
 	var utils = require('../libs/utils.js');
 	var pageHepler = require('../common/page-helper');
