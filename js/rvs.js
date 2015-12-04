@@ -5,7 +5,7 @@
 	var RV_TIME_PUBDATE = 'RV_TIME_PUBDATE';
 	var RV_TIME_UPDATE_SLIDER = 'RV_TIME_UPDATE_SLIDER';
 	var RV_LAST_ID = "RV_LAST_ID";
-	var RV_TIME_INTERVAL = 1000 * 60 * 10; //更新间隔(默认十分钟)
+	var RV_TIME_INTERVAL = 1000 * 60 * 5; //更新间隔(默认5分钟)
 
 	var RV_SLIDER_GUID = 'RV_SLIDER_GUID';
 
@@ -179,16 +179,14 @@
 			successCallback(false);
 			return;
 		}
-		//		//避免频繁刷新，默认最短刷新间隔为10分钟
-		//		var update = parseFloat(localStorage.getItem(RV_TIME_UPDATE));
-		//		if (update && (update + TIME_INTERVAL) > Date.parse(new Date())) {
-		//			successCallback(false);
-		//			return;
-		//		}
+		//避免频繁刷新，默认最短刷新间隔为10分钟
+		var update = parseFloat(localStorage.getItem(RV_TIME_UPDATE));
+		if (update && (update + RV_TIME_INTERVAL) > Date.parse(new Date())) {
+			successCallback(false);
+			return;
+		}
 		$.getFeed(RV_URL + '&id=2', function(rvs) {
-			var pubDate = parseFloat(localStorage.getItem(RV_TIME_PUBDATE));
-			console.log("RV_TIME_PUBDATE is " + pubDate + "Modified:" + Date.parse(rvs.posts[0].modified));
-			if (rvs.posts && (!pubDate || Date.parse(rvs.posts[0].modified) > pubDate)) {
+			if (rvs.posts ) {
 				var rvlist = [];
 				$.each(rvs.posts, function(index, post) {
 					var gearbox = post.custom_fields.gearbox[0];
@@ -219,7 +217,7 @@
 				if (rvs.posts[0]) {
 					localStorage.setItem(RV_LAST_ID, rvs.posts[0].id);
 				}
-				localStorage.setItem(RV_TIME_PUBDATE, Date.parse(rvs.posts[0].modified) + ''); //订阅发布时间
+				localStorage.setItem(RV_TIME_PUBDATE, Date.parse(rvs.posts[0].date) + ''); //订阅发布时间
 				localStorage.setItem(RV_TIME_UPDATE, Date.parse(new Date()) + ''); //本地更新时间
 			}
 		}, function(xhr) {
@@ -265,20 +263,10 @@
 		console.log("news is " + JSON.stringify(news));
 		var sqls = [];
 		$.each(news, function(index, item) {
-			if(kr.getNewsByGuid(item.guid, function(founded){
-			}))
-			{
-				sqls.push({
-					"sql": RV_SQL_UPDATE,
-					"data": item
-				});		
-			}else
-			{
-				sqls.push({
-					"sql": RV_SQL_INSERT,
-					"data": item
-				});	
-			}
+			sqls.push({
+				"sql": RV_SQL_INSERT,
+				"data": item
+			});	
 		});
 		console.log("sqls is " + JSON.stringify(sqls));
 		websql.process(sqls, function(tx, results) {
