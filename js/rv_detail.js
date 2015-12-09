@@ -25,10 +25,10 @@ define(function(require, exports, module) {
 		handler: self
 	});
 	
-	document.body.addEventListener('tap', function() {
+/*	document.body.addEventListener('tap', function() {
 		footerEl.classList.toggle('mui-active');
-	});
-	mui('#kr-article-article').on('tap', 'a', function() {
+	});*/
+/*	mui('#kr-article-article').on('tap', 'a', function() {
 		var url = this.href;
 		var protocol = /^([\w-]+:)\/\//.test(url) ? RegExp.$1 : '';
 		if (protocol === 'http:' || protocol === 'https:') { //外部链接
@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 			browserWebview.loadURL(url);
 			browserMainWebview.show('slide-in-bottom', 200);
 		}
-	});
+	});*/
 	(function($) {
 		var regex = /\((.*)\)/;
 		html5sql.openDatabase("kr", "36Kr", 5 * 1024 * 1024);
@@ -53,6 +53,7 @@ define(function(require, exports, module) {
 			document.body.classList.add('kr-overlay');
 			//console.log("id:" + event.detail.guid);
 			kr.getNewsByGuid(decodeURIComponent(event.detail.guid), function(news) {
+				console.log("item is " + JSON.stringify(news));
 				guid = event.detail.guid;
 				//coverEl.querySelector('img').src = news.image || 'img/blank_big.jpg';
 				//titleEl.innerText = news.title;

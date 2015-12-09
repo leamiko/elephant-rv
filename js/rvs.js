@@ -5,7 +5,7 @@
 	var RV_TIME_PUBDATE = 'RV_TIME_PUBDATE';
 	var RV_TIME_UPDATE_SLIDER = 'RV_TIME_UPDATE_SLIDER';
 	var RV_LAST_ID = "RV_LAST_ID";
-	var RV_TIME_INTERVAL = 1000 * 60 * 5; //更新间隔(默认5分钟)
+	var RV_TIME_INTERVAL = 1000 * 60 * 1; //更新间隔(默认5分钟)
 
 	var RV_SLIDER_GUID = 'RV_SLIDER_GUID';
 
@@ -28,7 +28,7 @@
 	var RV_SQL_SELECT_DETAIL = 'SELECT * FROM all_rvs WHERE guid = ? LIMIT 1;';
 	var RV_SQL_SELECT_SLIDER = 'SELECT * FROM all_rvs WHERE isSlider= ?;';
 	var RV_SQL_UPDATE_THUMBNAIL = 'UPDATE all_rvs SET thumbnail = ? WHERE guid = ?;';
-	var RV_SQL_UPDATE = 'UPDATE all_rvs SET guid = ?,title = ?,gearbox=?,location=?,capacity=?,price=?,cover = ?,thumbnail=?,pubDate=?,description=?, isSlider=? WHERE guid = ?;';
+	var RV_SQL_UPDATE = 'UPDATE all_rvs SET title = ?,gearbox=?,location=?,capacity=?,price=?,cover = ?,thumbnail=?,pubDate=?,description=?, isSlider=? WHERE guid = ?;';
 	var RV_SQL_UPDATE_COVER = 'UPDATE all_rvs SET cover = ? WHERE guid = ?;';
 	var RV_SQL_UPDATE_SLIDER = 'UPDATE all_rvs SET isSlider = ? WHERE guid = ?;';
 	var RV_SQL_DELETE = 'DELETE FROM all_rvs';
@@ -185,6 +185,7 @@
 			successCallback(false);
 			return;
 		}
+		console.log("refesh rv list from server");
 		$.getFeed(RV_URL + '&id=2', function(rvs) {
 			if (rvs.posts ) {
 				var rvlist = [];
@@ -211,8 +212,8 @@
 				});
 				rvlist.reverse();
 				console.log("getFeed: rvlist length is" + rvlist.length);
-				kr.addNews(rvlist, function(hasNew){
-					successCallback(hasNew);
+				kr.addNews(rvlist, function(){
+					successCallback(rvlist.length);
 				});
 				if (rvs.posts[0]) {
 					localStorage.setItem(RV_LAST_ID, rvs.posts[0].id);
@@ -230,12 +231,10 @@
 			"data": [guid]
 		}], function(tx, results) {
 			console.log("guid is" + guid + "row lenght is" + results.rows.length);
-			successCallback(results.rows.length > 0 && results.rows.item(0));
-			return results.rows.length > 0 && results.rows.item(0);
+			successCallback && successCallback(results.rows.length > 0 && results.rows.item(0));
 		}, function(error, failingQuery) {
 			errorCallback && errorCallback(error, failingQuery);
 		});
-		return false;
 	};
 	kr.getNews = function(latestId, pageSize, successCallback, errorCallback) {
 		if (typeof latestId === 'function') {
@@ -263,19 +262,28 @@
 		console.log("news is " + JSON.stringify(news));
 		var sqls = [];
 		$.each(news, function(index, item) {
-			sqls.push({
-				"sql": RV_SQL_INSERT,
-				"data": item
-			});	
+			var ret = kr.getNewsByGuid(item[0], function(founded){
+				if(founded)
+				{
+					//exchange the guid to the end
+					item.push(item.shift());
+					websql.process([{
+						"sql": RV_SQL_UPDATE,
+						"data": item
+					}],	function(tx, results) {						
+					},function(error, failingQuery) {
+					});
+				}else
+				{
+					websql.process([{
+						"sql": RV_SQL_INSERT,
+						"data": item
+					}],	function(tx, results) {						
+					},function(error, failingQuery) {
+					});					
+				}
+			});
 		});
-		console.log("sqls is " + JSON.stringify(sqls));
-		websql.process(sqls, function(tx, results) {
-			console.log("news inserted:" + JSON.stringify(tx) + JSON.stringify(results));
-			successCallback(true);
-		}, function(error, failingQuery) {
-			errorCallback && errorCallback(error, failingQuery);
-		});
-
 	};
 	kr.updateNews = function(news, successCallback, errorCallback) {
 		var sqls = [];

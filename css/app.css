@@ -3,10 +3,22 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
+.mui-bar-footer {
+	background: #efeff4;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.mui-bar-tab {
+	-webkit-box-shadow: none;
+	box-shadow: none;	
+}
+
 .mui-android .mui-bar-nav~.mui-content{
 	padding: 0;
 }
 .mui-bar-nav a,
+.mui-bar-footer a,
 .mui-bar .mui-btn-link {
 	color: white;
 }
