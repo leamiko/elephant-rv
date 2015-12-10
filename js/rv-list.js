@@ -13,7 +13,9 @@ define(function(require, exports, module) {
 				"id": "rv_detail",
 				"url": "/app/rv_detail.html",
 				"styles": {
-					"popGesture": "hide"
+					"popGesture": "hide",
+					 "top": "44px", 
+					 "bottom": "51px"
 				}
 			}]
 		}],

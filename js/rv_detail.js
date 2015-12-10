@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 				//coverEl.replaceChild(document.createElement('img'), coverEl.querySelector('img'));
 				articleEl.innerHTML = '';
 				titleEl.innerText = '';
-				footerEl.classList.remove('mui-active');
+				//footerEl.classList.remove('mui-active');
 				document.body.classList.add('kr-overlay');
 			}, 200);
 		}
@@ -75,13 +75,6 @@ define(function(require, exports, module) {
 			Intent = plus.android.importClass("android.content.Intent");
 			main = plus.android.runtimeMainActivity();
 		});
-		document.getElementById("share").addEventListener('tap', function(event) {
-			event.stopPropagation();
-			var intent = new Intent(Intent.ACTION_SEND);
-			intent.setType("text/plain");
-			intent.putExtra(Intent.EXTRA_TEXT, titleEl.innerText + '（' + guid + '）');
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			main.startActivity(Intent.createChooser(intent, "系统分享"));
-		});
+
 	})(mui);
 });

@@ -1,4 +1,4 @@
-﻿{
+{
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H5EC86117",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "36氪资讯",/*应用名称，程序桌面图标名称*/
@@ -188,6 +188,249 @@
 					"xxhdpi": "/Users/Houfeng/Dev/Projects/36kr/splash/xxhdpi.png"
 				}
 			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/app.js",
+					"libs/vue.js",
+					"mui/css/mui.min.css",
+					"common/vue-filter.js",
+					"common/event-binder.js",
+					"app/home.html",
+					"common/page-helper.js",
+					"css/app.css",
+					"mui/js/mui.min.js",
+					"app/tab-webview-subpage-chat.html",
+					"libs/utils.js",
+					"mui/fonts/mui.ttf",
+					"common/element-maper.js",
+					"app/tab-webview-subpage-contact.html",
+					"libs/ems.js",
+					"js/index.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/rv-filter-menu.html": {
+				"resources": [
+					"js/rv-filter-menu.js",
+					"mui/js/mui.min.js",
+					"mui/css/mui.min.css",
+					"mui/fonts/mui.ttf",
+					"libs/ems.js",
+					"common/page-helper.js",
+					"libs/utils.js",
+					"libs/vue.js",
+					"common/vue-filter.js",
+					"common/element-maper.js",
+					"common/event-binder.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/tab-webview-subpage-chat.html": {
+				"resources": [
+					"mui/js/mui.min.js",
+					"mui/css/mui.min.css",
+					"mui/fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/rv-list.html": {
+				"resources": [
+					"libs/vue.js",
+					"mui/css/mui.min.css",
+					"common/vue-filter.js",
+					"common/event-binder.js",
+					"js/rv-list.js",
+					"app/rv-list-inner.html",
+					"common/page-helper.js",
+					"css/app.css",
+					"mui/js/mui.min.js",
+					"libs/utils.js",
+					"common/element-maper.js",
+					"mui/fonts/mui.ttf",
+					"libs/ems.js"
+				],
+				"refer": [
+					"app/rv-filter-menu.html",
+					"app/rv_detail_main.html",
+					"app/rv_detail.html"
+				],
+				"priority": 0
+			},
+			"app/rv_detail_main.html": {
+				"resources": [
+					"js/app.js",
+					"js/html5sql.js",
+					"mui/js/mui.min.js",
+					"css/app.css",
+					"js/rvs.js",
+					"mui/css/mui.min.css",
+					"mui/fonts/mui.ttf",
+					"app/rv_detail.html",
+					"js/rv_detail_main.js",
+					"libs/ems.js",
+					"libs/vue.js",
+					"common/vue-filter.js",
+					"common/event-binder.js",
+					"common/page-helper.js",
+					"libs/utils.js",
+					"common/element-maper.js"
+				],
+				"refer": [
+					"app/booking.html"
+				],
+				"priority": 0
+			},
+			"app/rv_detail.html": {
+				"resources": [
+					"js/rv_detail.js",
+					"common/page-helper.js",
+					"js/app.js",
+					"js/html5sql.js",
+					"libs/vue.js",
+					"libs/utils.js",
+					"common/vue-filter.js",
+					"common/element-maper.js",
+					"common/event-binder.js",
+					"libs/ems.js",
+					"mui/js/mui.min.js",
+					"css/app.css",
+					"js/rvs.js",
+					"mui/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/rv-list-inner.html": {
+				"resources": [
+					"mui/css/mui.picker.min.css",
+					"js/html5sql.js",
+					"tmpl/news_item.js",
+					"css/app.css",
+					"tmpl/rv_slider.js",
+					"mui/js/mui.picker.min.js",
+					"js/rv-list-inner.js",
+					"js/feed.js",
+					"libs/ems.js",
+					"font-awesome/css/font-awesome.min.css",
+					"common/page-helper.js",
+					"libs/vue.js",
+					"libs/utils.js",
+					"common/vue-filter.js",
+					"common/element-maper.js",
+					"common/event-binder.js",
+					"img/bg.png",
+					"js/app.js",
+					"mui/css/mui.min.css",
+					"mui/js/mui.min.js",
+					"js/rvs.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/home.html": {
+				"resources": [
+					"img/shuijiao.jpg",
+					"libs/vue.js",
+					"common/vue-filter.js",
+					"img/bill.png",
+					"img/presentation.png",
+					"common/event-binder.js",
+					"img/luggage.png",
+					"common/page-helper.js",
+					"img/wrench.png",
+					"css/app.css",
+					"libs/utils.js",
+					"img/muwu.jpg",
+					"img/yuantiao.jpg",
+					"common/element-maper.js",
+					"img/cbd.jpg",
+					"js/home.js",
+					"libs/ems.js",
+					"mui/css/mui.min.css",
+					"mui/js/mui.min.js"
+				],
+				"refer": [
+					"app/rv-list.html"
+				],
+				"priority": 0
+			},
+			"app/tab-webview-subpage-contact.html": {
+				"resources": [
+					"mui/js/mui.min.js",
+					"mui/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/booking.html": {
+				"resources": [
+					"libs/vue.js",
+					"mui/css/mui.min.css",
+					"controls/price-detail/ui.html",
+					"mui/js/mui.picker.min.js",
+					"controls/booking-date/style.css",
+					"common/vue-filter.js",
+					"controls/booking-date/main.js",
+					"libs/tp.js",
+					"common/event-binder.js",
+					"js/booking.js",
+					"controls/booking-date/ui.html",
+					"common/page-helper.js",
+					"controls/price-detail/style.css",
+					"css/app.css",
+					"mui/js/mui.min.js",
+					"libs/utils.js",
+					"libs/jquery.js",
+					"mui/fonts/mui.ttf",
+					"common/element-maper.js",
+					"controls/price-detail/main.js",
+					"libs/ems-text.js",
+					"libs/ems.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"font-awesome/fonts/FontAwesome.otf",
+				"font-awesome/fonts/fontawesome-webfont.eot",
+				"tmpl/news_item.html",
+				"font-awesome/fonts/fontawesome-webfont.woff",
+				"libs/ems-json.js",
+				"img/qrcode.png",
+				"appStream.json",
+				"mui/js/mui.indexedlist.js",
+				"tmpl/rv_slider.html",
+				"font-awesome/fonts/fontawesome-webfont.svg",
+				"img/blank.jpg",
+				"browser.html",
+				"js/share.js",
+				"about.html",
+				"img/36kr.png",
+				"img/elephant-1.png",
+				"README.md",
+				"controls/price-filter/ui.html",
+				"controls/price-filter/main.js",
+				"img/blank_big.jpg",
+				"fonts/mui.ttf",
+				"setting.html",
+				"img/36kr_2x.png",
+				"img/elephant.jpg",
+				"img/icon.png",
+				"controls/price-filter/style.css",
+				"mui/css/mui.indexedlist.css",
+				"font-awesome/fonts/fontawesome-webfont.woff2",
+				"font-awesome/fonts/fontawesome-webfont.ttf",
+				"css/about.css"
+			]
 		}
 	}
 }

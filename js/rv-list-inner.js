@@ -49,6 +49,10 @@ define(function(require, exports, module) {
 		if (!detailWebview) {
 			detailWebview = plus.webview.getWebviewById('rv_detail');
 		}
+				//触发子窗口变更新闻详情
+		mui.fire(detailMainWebview, 'mui.view.beforeshow', {
+			guid: id
+		});
 		//触发子窗口变更新闻详情
 		mui.fire(detailWebview, 'mui.view.beforeshow', {
 			guid: id

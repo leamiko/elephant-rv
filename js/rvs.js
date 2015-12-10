@@ -22,13 +22,13 @@
 	var APP_URL = 'http://elephantrv.cn-hangzhou.aliapp.com/';
 	var RV_SLIDER_URL = 'http://elephantrv.cn-hangzhou.aliapp.com/?json=get_tag_posts&tag_slug=rv-slider'; //the first post as slider?
 	var RV_URL = 'http://elephantrv.cn-hangzhou.aliapp.com/?json=get_category_posts'; //'http://www.36kr.com/feed';
-	var RV_SQL_TABLE = 'DROP TABLE IF EXISTS all_rvs;CREATE TABLE all_rvs (guid INTEGER PRIMARY KEY, title TEXT,gearbox TEXT,location TEXT,capacity TEXT,price TEXT,cover TEXT,thumbnail TEXT,pubDate INTEGER,description TEXT, isSlider TEXT);';
-	var RV_SQL_SELECT = 'SELECT guid,title,gearbox,location,capacity,price,cover,thumbnail,pubDate FROM all_rvs WHERE pubDate < ? ORDER BY pubDate DESC LIMIT ?;';
-	var RV_SQL_INSERT = 'INSERT INTO all_rvs(guid,title,gearbox,location,capacity,price,cover,thumbnail,pubDate,description,isSlider) VALUES(?,?,?,?,?,?,?,?,?,?,?);';
+	var RV_SQL_TABLE = 'DROP TABLE IF EXISTS all_rvs;CREATE TABLE all_rvs (guid INTEGER PRIMARY KEY,url TEXT,title TEXT,gearbox TEXT,location TEXT,capacity TEXT,price TEXT,cover TEXT,thumbnail TEXT,pubDate INTEGER,description TEXT, isSlider TEXT);';
+	var RV_SQL_SELECT = 'SELECT guid,url,title,gearbox,location,capacity,price,cover,thumbnail,pubDate FROM all_rvs WHERE pubDate < ? ORDER BY pubDate DESC LIMIT ?;';
+	var RV_SQL_INSERT = 'INSERT INTO all_rvs(guid,url,title,gearbox,location,capacity,price,cover,thumbnail,pubDate,description,isSlider) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);';
 	var RV_SQL_SELECT_DETAIL = 'SELECT * FROM all_rvs WHERE guid = ? LIMIT 1;';
 	var RV_SQL_SELECT_SLIDER = 'SELECT * FROM all_rvs WHERE isSlider= ?;';
 	var RV_SQL_UPDATE_THUMBNAIL = 'UPDATE all_rvs SET thumbnail = ? WHERE guid = ?;';
-	var RV_SQL_UPDATE = 'UPDATE all_rvs SET title = ?,gearbox=?,location=?,capacity=?,price=?,cover = ?,thumbnail=?,pubDate=?,description=?, isSlider=? WHERE guid = ?;';
+	var RV_SQL_UPDATE = 'UPDATE all_rvs SET url = ?,title = ?,gearbox=?,location=?,capacity=?,price=?,cover = ?,thumbnail=?,pubDate=?,description=?, isSlider=? WHERE guid = ?;';
 	var RV_SQL_UPDATE_COVER = 'UPDATE all_rvs SET cover = ? WHERE guid = ?;';
 	var RV_SQL_UPDATE_SLIDER = 'UPDATE all_rvs SET isSlider = ? WHERE guid = ?;';
 	var RV_SQL_DELETE = 'DELETE FROM all_rvs';
@@ -208,7 +208,7 @@
 						});
 					}
 					console.log("isSlider =" + isSlider);
-					rvlist.push([post.id, post.title, gearbox,location,capacity,price,cover,thumbnail,Date.parse(post.date),post.content,isSlider]);
+					rvlist.push([post.id, post.url, post.title, gearbox,location,capacity,price,cover,thumbnail,Date.parse(post.date),post.content,isSlider]);
 				});
 				rvlist.reverse();
 				console.log("getFeed: rvlist length is" + rvlist.length);
