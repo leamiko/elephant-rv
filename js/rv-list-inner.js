@@ -73,6 +73,7 @@ define(function(require, exports, module) {
 			pullupRefresh(true, true);
 		}
 	});
+
 	mui.plusReady(function() {
 		//关闭splash界面
 		plus.navigator.closeSplashscreen();
@@ -83,7 +84,27 @@ define(function(require, exports, module) {
 			pulldownRefresh();
 		}, 2000);
 	});
-	
+	//当点击main窗口上的filter菜单时，inner窗口也应该加上蒙版。同时点击inner窗口蒙版时候应该关闭filter菜单
+	var showMask = false;
+	var mask = mui.createMask(closeMenu);
+	function closeMenu()
+	{
+		console.log("inner tap close menu");
+		var mainListWindow = plus.webview.currentWebview().parent();
+		mui.fire(mainListWindow, "inner-mask-close");
+		showMask = false;
+	}
+	window.addEventListener('filter-menu-open', function(){
+		mask.show();
+		showMask = true;
+	});
+	window.addEventListener('filter-menu-close', function(){
+		if(showMask)
+		{
+			mask.close();
+			showMask = false;
+		}
+	});
 	var latestPubDate = Number.MAX_VALUE;
 	var hasMore = true;
 

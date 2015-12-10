@@ -17,15 +17,19 @@ define(function(require, exports, module) {
 				}
 			}]
 		}],
+		subpages:[{
+			url:'rv-list-inner.html',
+			id:'rv-list-inner',
+			styles:{
+				top: '44px',
+				bottom: '0px',
+			}
+		}],
 		swipeBack: false,
 		beforeback: back
 	});
 
 	mui.plusReady(function() {
-		plus.webview.currentWebview().append(plus.webview.create('rv-list-inner.html', 'rv-list-inner', {
-			top: "44px", 
-			bottom: "0px"
-		}));
 		main = plus.webview.currentWebview();
 		//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
 		setTimeout(function () {
@@ -39,7 +43,6 @@ define(function(require, exports, module) {
 			});
 		},300);
 		});
-	
 	/*
 	 * 显示菜单菜单
 	 */
@@ -64,6 +67,10 @@ define(function(require, exports, module) {
 				//显示主窗体遮罩
 				mask.show();
 				showMenu = true;
+				//显示inner窗口遮罩
+				var innerListWindow = plus.webview.currentWebview().children()[0];
+				console.log("fire event filter-menu-open");
+				mui.fire(innerListWindow, 'filter-menu-open');
 			}
 		}
 	function closeMenu () {
@@ -95,6 +102,9 @@ define(function(require, exports, module) {
 				menu.hide();
 			}, 300);
 			showMenu = false;
+			//通知inner窗口关闭遮罩
+			var innerListWindow = plus.webview.currentWebview().children()[0];
+			mui.fire(innerListWindow, 'filter-menu-close');
 		}
 	}
 	
@@ -126,6 +136,10 @@ define(function(require, exports, module) {
 	window.addEventListener("swiperight", closeMenu);
 	 //menu页面向右滑动，关闭菜单；
 	window.addEventListener("menu:swiperight", closeMenu);
+	//inner窗口遮罩点击导致的菜单关闭
+	window.addEventListener('inner-mask-close', function(){
+		mask.close();
+	});
 
 	 //重写mui.menu方法，Android版本menu按键按下可自动打开、关闭侧滑菜单；
 	mui.menu = function() {
