@@ -1,13 +1,6 @@
 define(function(require, exports, module) {
 	var url;
-	var guid;
-	
-	var utils = require('../libs/utils.js');
-	var pageHepler = require('../common/page-helper');
-
-	pageHepler.init({
-		handler: self
-	});
+	var n;
 	
 	(function($) {
 		var Intent = null,
@@ -41,10 +34,37 @@ define(function(require, exports, module) {
 			//console.log("id:" + event.detail.guid);
 			kr.getNewsByGuid(decodeURIComponent(event.detail.guid), function(news) {
 				console.log("item is " + JSON.stringify(news));
-				guid = event.detail.guid;
 				url = news.url;
+				n = news;
 			});
 		});
-
+		document.querySelector('.book').addEventListener('tap', book);
+		function book(e){
+			var item = this;
+			var url = item.getAttribute('data-url');
+			if (window.plus) {
+				console.log(url);
+				mui.openWindow({
+					url: url,
+					id: url,
+					show: {
+						aniShow: 'pop-in'
+					},
+					waiting: {
+						autoShow: true
+					}
+				});
+			} else {
+				window.open(url, '_self');
+			}
+			var bookingWebview = plus.webview.getWebviewById(url);
+				//触发子窗口变更新闻详情
+			console.log(n);
+			mui.fire(bookingWebview, 'mui.view.beforeshow', {
+				news:n
+			});
+		}
 	})(mui);
 });
+
+// 添加待办事项

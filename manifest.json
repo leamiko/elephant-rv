@@ -283,7 +283,8 @@
 					"common/element-maper.js"
 				],
 				"refer": [
-					"app/booking.html"
+					"app/booking.html",
+					"app/booking_main.html"
 				],
 				"priority": 0
 			},
@@ -329,7 +330,8 @@
 					"js/app.js",
 					"mui/css/mui.min.css",
 					"mui/js/mui.min.js",
-					"js/rvs.js"
+					"js/rvs.js",
+					"mui/fonts/mui.ttf"
 				],
 				"refer": [],
 				"priority": 0
@@ -392,6 +394,20 @@
 					"common/element-maper.js",
 					"controls/price-detail/main.js",
 					"libs/ems-text.js",
+					"libs/ems.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"app/booking_main.html": {
+				"resources": [
+					"mui/js/mui.min.js",
+					"css/app.css",
+					"mui/css/mui.min.css",
+					"js/booking_main.js",
+					"mui/js/mui.picker.min.js",
+					"mui/fonts/mui.ttf",
+					"app/booking.html",
 					"libs/ems.js"
 				],
 				"refer": [],

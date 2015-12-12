@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>房车预定</title>
+	<link href="../mui/css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/app.css?v=2015123" />
+	<style>
+		h5 {
+			padding: 8px;
+		}
+		
+		.mui-content {
+			padding-bottom: 44px;
+		}
+		
+		.mui-table-view {
+			margin-bottom: 20px;
+		}
+		
+		.mui-table-view-cell .ct-right-text {
+			position: absolute;
+			font-size: 14px;
+			height: 16px;
+			line-height: 16px;
+			right: 40px;
+			top: 50%;
+			margin-top: -8px;
+		}
+		
+		.mui-input-row>label {
+			padding: 0px 15px;
+			line-height: 40px;
+		}
+		
+		.mui-input-row>input {
+			font-size: 14px;
+		}
+		
+		.ct-tips {
+			margin: 10px;
+			font-size: 10px;
+			background-color: #fff;
+			padding: 8px;
+			border-radius: 3px;
+		}
+		
+		.ct-bar-submit {
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			background: #FF9913;
+			height: 44px;
+			line-height: 44px;
+			padding: 0px 140px 0px 15px;
+			color: #fff;
+			font-size: 16px;
+		}
+		
+		.ct-submit-btn {
+			position: absolute;
+			width: 80px;
+			background-color: #ff7d13;
+			text-align: center;
+			right: 0px;
+			color: #fff;
+		}
+		
+		.ct-pay-detail {
+			position: absolute;
+			width: 60px;
+			text-align: center;
+			right: 80px;
+			color: #fff;
+		}
+		
+		.ct-pay-detail .mui-icon {
+			font-size: 18px;
+			line-height: 44px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title kr-title">房车预定</h1>
+	</header>
+
+	<div class="ct-bar-submit">
+		<span>总额</span>
+		<strong>￥365</strong>
+		<span class="ct-pay-detail" data-event="tap>showPriceDetail">明细<i class="mui-icon mui-icon-arrowright"></i></span>
+		<span class="ct-submit-btn" data-url="./booking-done.html">预定</span>
+	</div>
+	<script src="../mui/js/mui.min.js"></script>
+	<script src="../mui/js/mui.picker.min.js"></script>
+	<script src="../libs/ems.js" data-main='../js/booking_main.js'></script>
+</body>
+
+</html>

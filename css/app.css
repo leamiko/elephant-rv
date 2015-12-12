@@ -1,3 +1,30 @@
+.rv-background-color {
+	background-color: #11b8ff;
+}
+.booking-right-text{
+	position: absolute;
+	height: 16px;
+	right: 30px;
+	top: 50%;
+	margin-top: -8px;
+}
+.booking-ui{
+	margin-top: 0px; 
+	margin-bottom: 0px;
+}
+.booking-info-text{
+	font-size:15px;
+	padding-left:5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.rv-tips{
+	margin: 5px;
+	font-size: 14px;
+	background-color: #FFFFFF;
+	padding: 8px;
+	border-radius: 3px;
+}
 .mui-bar-nav {
 	background-color: #11b8ff;
 	-webkit-box-shadow: none;
@@ -272,6 +299,21 @@
 	position: absolute;
 	left: 15px;
 	bottom: 15px;
+	width: 90%;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 21px;
+	color: black;
+}
+.rv-book-banner {
+	height: 44px;
+	position: relative;
+	overflow: hidden;
+}
+.rv-book-title {
+	position: absolute;
+	left: 10px;
+	bottom: 30px;
 	width: 90%;
 	font-size: 16px;
 	font-weight: 400;
